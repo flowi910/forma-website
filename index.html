@@ -1,0 +1,1506 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forma — Physiotherapie München</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+  <style>
+    /* ===========================
+       VARIABLES & RESET
+    =========================== */
+    :root {
+      --cream:      #F8F5F0;
+      --bone:       #EDE8E0;
+      --bone-dark:  #E0D9CF;
+      --ink:        #18150F;
+      --ink-mid:    #3A3630;
+      --stone:      #8A8278;
+      --gold:       #B8956A;
+      --gold-light: #CCB08A;
+      --gold-pale:  #F2E8D8;
+      --sage:       #3D5247;
+      --sage-light: #4E6B5E;
+      --ff-display: 'DM Serif Display', Georgia, serif;
+      --ff-body:    'DM Sans', system-ui, sans-serif;
+      --ease-out:   cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: var(--ff-body);
+      font-weight: 300;
+      line-height: 1.75;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img, svg { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ===========================
+       LAYOUT
+    =========================== */
+    .container {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4.5vw, 64px);
+    }
+    .section-pad { padding: clamp(80px, 10vw, 148px) 0; }
+
+    /* ===========================
+       BUTTONS
+    =========================== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 15px 34px;
+      font-family: var(--ff-body);
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.06em;
+      transition: all 0.3s var(--ease-out);
+      cursor: pointer;
+      border: none;
+    }
+    .btn--sage  { background: var(--sage); color: #fff; }
+    .btn--sage:hover  { background: var(--sage-light); transform: translateY(-2px); }
+    .btn--outline { border: 1px solid var(--ink); color: var(--ink); background: transparent; }
+    .btn--outline:hover { background: var(--ink); color: var(--cream); }
+
+    /* ===========================
+       NAVIGATION
+    =========================== */
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 200;
+      padding: 26px 0;
+      transition: padding 0.4s var(--ease-out), background 0.4s, border-color 0.4s;
+      border-bottom: 1px solid transparent;
+    }
+    .nav.scrolled {
+      background: rgba(248,245,240,0.93);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      padding: 16px 0;
+      border-bottom-color: var(--bone-dark);
+    }
+    .nav__inner {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4.5vw, 64px);
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    .nav__logo {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1.65rem;
+      letter-spacing: -0.03em;
+      margin-right: auto;
+    }
+    .nav__links { display: flex; align-items: center; gap: 36px; }
+    .nav__links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stone);
+      position: relative;
+      transition: color 0.25s;
+    }
+    .nav__links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 1px;
+      background: var(--gold);
+      transition: width 0.3s var(--ease-out);
+    }
+    .nav__links a:hover { color: var(--ink); }
+    .nav__links a:hover::after { width: 100%; }
+
+    /* ===========================
+       HERO
+    =========================== */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 88px;
+    }
+    /* Grain texture overlay */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0.032;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+      background-size: 160px 160px;
+    }
+    .hero__inner {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4.5vw, 64px);
+      display: grid;
+      grid-template-columns: 55fr 45fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .hero__content { padding: clamp(40px, 5vw, 72px) 0; }
+    .hero__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 36px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.2s forwards;
+    }
+    .hero__eyebrow-rule { width: 44px; height: 1px; background: var(--gold); }
+    .hero__eyebrow-text {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+    .hero__heading {
+      font-family: var(--ff-display);
+      font-size: clamp(3.2rem, 7.5vw, 7rem);
+      line-height: 1.0;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.38s forwards;
+    }
+    .hero__heading em { font-style: italic; color: var(--gold); }
+    .hero__sub {
+      font-size: clamp(0.95rem, 1.3vw, 1.1rem);
+      font-weight: 300;
+      color: var(--stone);
+      max-width: 440px;
+      line-height: 1.85;
+      margin-bottom: 48px;
+      opacity: 0;
+      animation: fadeUp 1s var(--ease-out) 0.52s forwards;
+    }
+    .hero__ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.66s forwards;
+    }
+    .hero__meta {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.74rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stone);
+      opacity: 0;
+      animation: fadeUp 0.9s var(--ease-out) 0.8s forwards;
+    }
+    .hero__meta-sep { width: 1px; height: 14px; background: var(--bone-dark); }
+    .hero__illustration {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      animation: fadeIn 1.4s var(--ease-out) 0.5s forwards;
+    }
+    .hero__illustration svg { width: 100%; max-width: 500px; height: auto; }
+
+    /* ===========================
+       STATS
+    =========================== */
+    .stats {
+      background: var(--bone);
+      border-top: 1px solid var(--bone-dark);
+      border-bottom: 1px solid var(--bone-dark);
+    }
+    .stats__grid {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4.5vw, 64px);
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .stat {
+      padding: clamp(44px, 5vw, 68px) 40px;
+      position: relative;
+    }
+    .stat + .stat::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 25%; bottom: 25%;
+      width: 1px;
+      background: var(--bone-dark);
+    }
+    .stat__number {
+      font-family: var(--ff-display);
+      font-size: clamp(3rem, 5.5vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 10px;
+    }
+    .stat__number sup { font-size: 0.5em; color: var(--gold); vertical-align: super; }
+    .stat__label {
+      font-size: 0.76rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ===========================
+       ABOUT
+    =========================== */
+    .about { background: var(--cream); }
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(60px, 9vw, 130px);
+      align-items: start;
+    }
+    .about__index {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--gold);
+      letter-spacing: 0.05em;
+      margin-bottom: 28px;
+    }
+    .about__heading {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.025em;
+      margin-bottom: 32px;
+    }
+    .about__heading em { font-style: italic; color: var(--stone); }
+    .about__body {
+      font-size: 1rem;
+      color: var(--ink-mid);
+      line-height: 1.9;
+      margin-bottom: 22px;
+    }
+    .about__sig {
+      margin-top: 44px;
+      padding-top: 32px;
+      border-top: 1px solid var(--bone-dark);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .about__sig-rule { flex: 1; height: 1px; background: var(--bone-dark); }
+    .about__sig-name {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--stone);
+      white-space: nowrap;
+    }
+    .about__panel {
+      background: var(--bone);
+      padding: clamp(36px, 4vw, 56px);
+      position: relative;
+      overflow: hidden;
+    }
+    .about__panel::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .about__quote {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+      line-height: 1.55;
+      color: var(--ink);
+      margin-bottom: 40px;
+    }
+    .principles { display: flex; flex-direction: column; gap: 24px; }
+    .principle { display: flex; gap: 18px; align-items: flex-start; }
+    .principle__icon { width: 30px; height: 30px; flex-shrink: 0; margin-top: 2px; }
+    .principle__body { font-size: 0.88rem; color: var(--ink-mid); line-height: 1.65; }
+    .principle__body strong {
+      font-weight: 500;
+      color: var(--ink);
+      display: block;
+      margin-bottom: 3px;
+      font-size: 0.9rem;
+    }
+
+    /* ===========================
+       SERVICES
+    =========================== */
+    .services { background: var(--ink); }
+    .services__header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: end;
+      margin-bottom: clamp(60px, 7vw, 100px);
+    }
+    .services__tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+    }
+    .services__heading {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--cream);
+    }
+    .services__heading em { font-style: italic; color: var(--gold); }
+    .services__intro {
+      font-size: 0.95rem;
+      line-height: 1.85;
+      color: var(--stone);
+      align-self: end;
+    }
+    .services__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.07);
+    }
+    .svc {
+      background: var(--ink);
+      padding: clamp(36px, 4vw, 52px);
+      position: relative;
+      transition: background 0.35s var(--ease-out);
+      cursor: default;
+    }
+    .svc:hover { background: #21201A; }
+    .svc__icon {
+      width: 44px; height: 44px;
+      margin-bottom: 32px;
+    }
+    .svc__icon path,
+    .svc__icon circle,
+    .svc__icon line,
+    .svc__icon ellipse,
+    .svc__icon polyline {
+      transition: stroke 0.35s;
+    }
+    .svc:hover .svc__icon path,
+    .svc:hover .svc__icon circle,
+    .svc:hover .svc__icon line,
+    .svc:hover .svc__icon ellipse { stroke: var(--gold); }
+    .svc__num {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      color: var(--gold);
+      margin-bottom: 14px;
+    }
+    .svc__name {
+      font-family: var(--ff-display);
+      font-size: 1.25rem;
+      color: var(--cream);
+      margin-bottom: 12px;
+      line-height: 1.2;
+    }
+    .svc__desc {
+      font-size: 0.85rem;
+      color: var(--stone);
+      line-height: 1.75;
+    }
+    .svc__arrow {
+      position: absolute;
+      bottom: 32px; right: 32px;
+      width: 18px; height: 18px;
+      opacity: 0;
+      transition: opacity 0.3s, transform 0.3s var(--ease-out);
+      transform: translate(-6px, 6px);
+    }
+    .svc:hover .svc__arrow {
+      opacity: 1;
+      transform: translate(0,0);
+    }
+
+    /* ===========================
+       PROCESS
+    =========================== */
+    .process { background: var(--cream); }
+    .process__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: clamp(64px, 8vw, 108px);
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .process__heading {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+    }
+    .process__heading em { font-style: italic; color: var(--gold); }
+    .process__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      position: relative;
+    }
+    .process__grid::after {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 48px; right: 48px;
+      height: 1px;
+      background: var(--bone-dark);
+      pointer-events: none;
+    }
+    .step { padding-right: 32px; position: relative; z-index: 1; }
+    .step__dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      border: 1px solid var(--bone-dark);
+      background: var(--cream);
+      margin-bottom: 36px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .step:hover .step__dot {
+      border-color: var(--gold);
+      background: var(--gold);
+    }
+    .step__n {
+      font-family: var(--ff-display);
+      font-size: clamp(2.8rem, 4vw, 4.5rem);
+      color: var(--bone-dark);
+      line-height: 1;
+      letter-spacing: -0.05em;
+      margin-bottom: 18px;
+    }
+    .step__title {
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      color: var(--ink);
+      margin-bottom: 12px;
+    }
+    .step__desc { font-size: 0.85rem; color: var(--stone); line-height: 1.72; }
+
+    /* ===========================
+       TEAM
+    =========================== */
+    .team { background: var(--bone); }
+    .team__head {
+      text-align: center;
+      margin-bottom: clamp(60px, 7vw, 100px);
+    }
+    .team__tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 16px;
+    }
+    .team__heading {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.025em;
+    }
+    .team__heading em { font-style: italic; color: var(--gold); }
+    .team__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(20px, 2.5vw, 36px);
+    }
+    .tcard {
+      background: var(--cream);
+      overflow: hidden;
+      transition: transform 0.4s var(--ease-out);
+    }
+    .tcard:hover { transform: translateY(-6px); }
+    .tcard__fig {
+      width: 100%;
+      aspect-ratio: 4/5;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      position: relative;
+    }
+    .tcard__fig svg { width: 100%; height: 100%; }
+    .tcard__body {
+      padding: 26px 32px 30px;
+      border-top: 2px solid var(--gold);
+    }
+    .tcard__role {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 7px;
+    }
+    .tcard__name {
+      font-family: var(--ff-display);
+      font-size: 1.35rem;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .tcard__spec { font-size: 0.83rem; color: var(--stone); line-height: 1.6; }
+
+    /* ===========================
+       PULL QUOTE
+    =========================== */
+    .pullquote {
+      background: var(--sage);
+      text-align: center;
+      padding: clamp(80px, 10vw, 140px) clamp(20px, 4.5vw, 64px);
+    }
+    .pullquote__inner { max-width: 860px; margin: 0 auto; }
+    .pullquote__glyph {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 7rem;
+      line-height: 0.5;
+      color: var(--gold);
+      margin-bottom: 36px;
+      display: block;
+    }
+    .pullquote__text {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: clamp(1.6rem, 3.2vw, 2.9rem);
+      line-height: 1.4;
+      letter-spacing: -0.015em;
+      color: var(--cream);
+      margin-bottom: 32px;
+    }
+    .pullquote__attr {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(248,245,240,0.45);
+    }
+
+    /* ===========================
+       TESTIMONIALS
+    =========================== */
+    .testimonials { background: var(--cream); }
+    .testimonials__head { margin-bottom: clamp(56px, 7vw, 88px); }
+    .testimonials__tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 14px;
+    }
+    .testimonials__heading {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      letter-spacing: -0.025em;
+    }
+    .testimonials__heading em { font-style: italic; color: var(--gold); }
+    .testimonials__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(18px, 2.5vw, 28px);
+    }
+    .testi {
+      background: var(--bone);
+      padding: clamp(28px, 3vw, 42px);
+      border-top: 2px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .testi:hover { border-color: var(--gold); }
+    .testi__dots { display: flex; gap: 5px; margin-bottom: 22px; }
+    .testi__dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); }
+    .testi__text {
+      font-style: italic;
+      font-size: 0.92rem;
+      line-height: 1.78;
+      color: var(--ink-mid);
+      margin-bottom: 24px;
+    }
+    .testi__by {
+      font-size: 0.72rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+
+    /* ===========================
+       CONTACT
+    =========================== */
+    .contact { background: var(--bone); }
+    .contact__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(60px, 9vw, 130px);
+    }
+    .contact__tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 16px;
+    }
+    .contact__heading {
+      font-family: var(--ff-display);
+      font-size: clamp(2rem, 3.5vw, 3.2rem);
+      letter-spacing: -0.025em;
+      margin-bottom: 18px;
+      line-height: 1.1;
+    }
+    .contact__heading em { font-style: italic; color: var(--gold); }
+    .contact__sub { font-size: 0.95rem; color: var(--stone); line-height: 1.75; margin-bottom: 48px; }
+    .form { display: flex; flex-direction: column; gap: 22px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+    .form-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+    }
+    .form-input, .form-textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--bone-dark);
+      padding: 12px 0;
+      font-family: var(--ff-body);
+      font-weight: 300;
+      font-size: 0.95rem;
+      color: var(--ink);
+      transition: border-color 0.3s;
+      outline: none;
+      resize: none;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--gold); }
+    .form-input::placeholder, .form-textarea::placeholder { color: var(--stone); opacity: 0.5; }
+    .form-textarea { min-height: 96px; }
+
+    .info-list { display: flex; flex-direction: column; padding-top: 72px; }
+    .info-item {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--bone-dark);
+    }
+    .info-item:first-child { border-top: 1px solid var(--bone-dark); }
+    .info-label {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 6px;
+    }
+    .info-value {
+      font-family: var(--ff-display);
+      font-size: 1.05rem;
+      color: var(--ink);
+      line-height: 1.5;
+    }
+    .map-wrap {
+      margin-top: 28px;
+      height: 188px;
+      overflow: hidden;
+      position: relative;
+      background: var(--bone-dark);
+    }
+
+    /* ===========================
+       FOOTER
+    =========================== */
+    .footer {
+      background: var(--ink);
+      padding: 44px 0;
+    }
+    .footer__inner {
+      max-width: 1340px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4.5vw, 64px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .footer__logo {
+      font-family: var(--ff-display);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--cream);
+    }
+    .footer__copy { font-size: 0.74rem; color: rgba(248,245,240,0.35); letter-spacing: 0.04em; }
+    .footer__nav { display: flex; gap: 28px; }
+    .footer__nav a {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(248,245,240,0.35);
+      transition: color 0.25s;
+    }
+    .footer__nav a:hover { color: var(--gold); }
+
+    /* ===========================
+       ANIMATIONS
+    =========================== */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes drawPath {
+      from { stroke-dashoffset: 1600; }
+      to   { stroke-dashoffset: 0; }
+    }
+    @keyframes floatDot {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-7px); }
+    }
+
+    /* Scroll-reveal classes */
+    .reveal, .reveal-l, .reveal-r {
+      opacity: 0;
+      transition: opacity 0.85s var(--ease-out), transform 0.85s var(--ease-out);
+    }
+    .reveal       { transform: translateY(32px); }
+    .reveal-l     { transform: translateX(-32px); }
+    .reveal-r     { transform: translateX(32px); }
+    .reveal.on, .reveal-l.on, .reveal-r.on {
+      opacity: 1;
+      transform: translate(0);
+    }
+    .d1 { transition-delay: 0.1s; }
+    .d2 { transition-delay: 0.2s; }
+    .d3 { transition-delay: 0.3s; }
+    .d4 { transition-delay: 0.4s; }
+
+    /* Hero SVG path animation */
+    .hpath {
+      stroke-dasharray: 1600;
+      stroke-dashoffset: 1600;
+      animation: drawPath 2.8s var(--ease-out) 0.9s forwards;
+    }
+    .hpath2 { animation-delay: 1.2s; }
+    .hpath3 { animation-delay: 1.5s; }
+    .hpath4 { animation-delay: 1.6s; }
+    .hpath5 { animation-delay: 1.7s; }
+    .hdot {
+      animation: floatDot 4.5s ease-in-out infinite;
+      animation-delay: var(--dd, 0s);
+    }
+
+    /* ===========================
+       RESPONSIVE
+    =========================== */
+    @media (max-width: 1100px) {
+      .services__grid { grid-template-columns: repeat(2, 1fr); }
+      .process__grid  { grid-template-columns: repeat(2, 1fr); gap: 56px 40px; }
+      .process__grid::after { display: none; }
+    }
+    @media (max-width: 768px) {
+      .nav__links, .nav .btn { display: none; }
+      .hero__inner  { grid-template-columns: 1fr; }
+      .hero__illustration { display: none; }
+      .stats__grid  { grid-template-columns: 1fr; }
+      .stat + .stat::before { top: 0; left: 10%; right: 10%; height: 1px; width: auto; bottom: auto; }
+      .about__grid  { grid-template-columns: 1fr; }
+      .services__header { grid-template-columns: 1fr; }
+      .services__grid { grid-template-columns: 1fr; }
+      .process__grid { grid-template-columns: 1fr; }
+      .team__grid   { grid-template-columns: 1fr; max-width: 380px; margin: 0 auto; }
+      .testimonials__grid { grid-template-columns: 1fr; }
+      .contact__grid { grid-template-columns: 1fr; }
+      .info-list     { padding-top: 20px; }
+      .footer__inner { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ======== NAVIGATION ======== -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#" class="nav__logo">Forma</a>
+    <ul class="nav__links">
+      <li><a href="#about">Philosophie</a></li>
+      <li><a href="#services">Leistungen</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><a href="#contact">Kontakt</a></li>
+    </ul>
+    <a href="#contact" class="btn btn--sage">Termin buchen</a>
+  </div>
+</nav>
+
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="home">
+  <div class="hero__inner">
+    <div class="hero__content">
+      <div class="hero__eyebrow">
+        <span class="hero__eyebrow-rule"></span>
+        <span class="hero__eyebrow-text">Physiotherapie München</span>
+      </div>
+      <h1 class="hero__heading">Der Weg<br>zur <em>Bewegung</em></h1>
+      <p class="hero__sub">Präzision, die heilt. Einfühlungsvermögen, das trägt. Für jeden Menschen, der seinen Körper zurückgewinnen will.</p>
+      <div class="hero__ctas">
+        <a href="#contact" class="btn btn--sage">Termin vereinbaren</a>
+        <a href="#services" class="btn btn--outline">Leistungen entdecken</a>
+      </div>
+      <div class="hero__meta">
+        <span>Seit 2008</span>
+        <span class="hero__meta-sep"></span>
+        <span>Maximilianstrasse 42, München</span>
+        <span class="hero__meta-sep"></span>
+        <span>+49 89 123 456 00</span>
+      </div>
+    </div>
+
+    <!-- Abstract body-in-motion illustration -->
+    <div class="hero__illustration">
+      <svg viewBox="0 0 460 580" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Soft background field -->
+        <circle cx="230" cy="295" r="210" fill="#EDE8E0" opacity="0.55"/>
+        <!-- Outer dashed orbit -->
+        <circle cx="230" cy="295" r="196" stroke="#B8956A" stroke-width="0.6" stroke-dasharray="5 10" opacity="0.28"/>
+        <!-- Axis lines, very subtle -->
+        <line x1="230" y1="62" x2="230" y2="522" stroke="#B8956A" stroke-width="0.5" opacity="0.22"/>
+        <line x1="42"  y1="295" x2="418" y2="295" stroke="#B8956A" stroke-width="0.5" opacity="0.22"/>
+
+        <!-- HEAD — open circle suggesting the skull -->
+        <circle class="hdot" style="--dd:0s" cx="230" cy="92" r="26" stroke="#B8956A" stroke-width="1.6" fill="none"/>
+        <circle cx="230" cy="92" r="4" fill="#B8956A" opacity="0.5"/>
+
+        <!-- SPINE — long flowing S-curve, drawn in -->
+        <path class="hpath" d="M232 118 C240 155 215 185 228 225 C241 265 208 292 218 335 C228 376 212 400 218 432" stroke="#18150F" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+
+        <!-- VERTEBRAE dots -->
+        <circle cx="235" cy="148" r="3.2" fill="#B8956A" opacity="0.75"/>
+        <circle cx="230" cy="178" r="3.2" fill="#B8956A" opacity="0.75"/>
+        <circle cx="229" cy="208" r="3.2" fill="#B8956A" opacity="0.75"/>
+        <circle cx="233" cy="238" r="3.2" fill="#B8956A" opacity="0.75"/>
+        <circle cx="223" cy="268" r="3.2" fill="#B8956A" opacity="0.75"/>
+        <circle cx="220" cy="298" r="3.2" fill="#B8956A" opacity="0.75"/>
+        <circle cx="221" cy="328" r="3.2" fill="#B8956A" opacity="0.75"/>
+
+        <!-- SHOULDERS arc -->
+        <path class="hpath hpath2" d="M185 205 C174 180 176 155 232 140" stroke="#3D5247" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <path class="hpath hpath3" d="M272 200 C283 175 280 155 232 140" stroke="#3D5247" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+
+        <!-- LEFT ARM — reaching forward, motion -->
+        <path class="hpath hpath4" d="M185 205 C164 218 136 240 112 272 C94 298 88 318 96 334" stroke="#18150F" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <!-- LEFT HAND node -->
+        <circle class="hdot" style="--dd:-2s" cx="96" cy="334" r="7" stroke="#3D5247" stroke-width="1.2" fill="none" opacity="0.6"/>
+
+        <!-- RIGHT ARM -->
+        <path class="hpath hpath4" d="M272 200 C294 218 318 242 336 268" stroke="#18150F" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <!-- RIGHT HAND node -->
+        <circle class="hdot" style="--dd:-3.5s" cx="336" cy="268" r="7" stroke="#3D5247" stroke-width="1.2" fill="none" opacity="0.6"/>
+
+        <!-- HIP span -->
+        <path d="M190 338 Q218 330 246 338" stroke="#B8956A" stroke-width="1" fill="none" opacity="0.55"/>
+
+        <!-- LEFT LEG -->
+        <path class="hpath hpath5" d="M197 342 C186 378 178 410 172 444 C167 468 170 482 176 494" stroke="#18150F" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+        <!-- RIGHT LEG — slightly extended -->
+        <path class="hpath hpath5" d="M240 338 C250 376 259 410 264 444 C269 468 266 482 260 494" stroke="#18150F" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+
+        <!-- FOOT nodes -->
+        <circle class="hdot" style="--dd:-1.2s" cx="176" cy="497" r="5" fill="#B8956A" opacity="0.6"/>
+        <circle class="hdot" style="--dd:-4s"   cx="260" cy="497" r="5" fill="#B8956A" opacity="0.6"/>
+
+        <!-- Decorative cross marks -->
+        <line x1="392" y1="190" x2="402" y2="190" stroke="#B8956A" stroke-width="0.9"/>
+        <line x1="397" y1="185" x2="397" y2="195" stroke="#B8956A" stroke-width="0.9"/>
+        <line x1="64"  y1="408" x2="74"  y2="408" stroke="#B8956A" stroke-width="0.9"/>
+        <line x1="69"  y1="403" x2="69"  y2="413" stroke="#B8956A" stroke-width="0.9"/>
+        <line x1="380" y1="430" x2="388" y2="430" stroke="#3D5247" stroke-width="0.9" opacity="0.6"/>
+        <line x1="384" y1="426" x2="384" y2="434" stroke="#3D5247" stroke-width="0.9" opacity="0.6"/>
+
+        <!-- Decorative arcs, top and bottom -->
+        <path d="M82  135 Q230 68  378 135" stroke="#3D5247" stroke-width="0.5" fill="none" opacity="0.28"/>
+        <path d="M100 510 Q230 548 360 510" stroke="#B8956A" stroke-width="0.5" fill="none" opacity="0.38"/>
+
+        <!-- Small floating geometric form -->
+        <rect x="376" y="326" width="22" height="22" rx="2" stroke="#B8956A" stroke-width="0.8" fill="none" opacity="0.35" transform="rotate(22 387 337)"/>
+      </svg>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======== STATS ======== -->
+<div class="stats">
+  <div class="stats__grid">
+    <div class="stat reveal">
+      <div class="stat__number">17<sup>+</sup></div>
+      <div class="stat__label">Jahre Erfahrung</div>
+    </div>
+    <div class="stat reveal d2">
+      <div class="stat__number">4<sup>k</sup></div>
+      <div class="stat__label">Behandelte Patienten</div>
+    </div>
+    <div class="stat reveal d3">
+      <div class="stat__number">98<sup>%</sup></div>
+      <div class="stat__label">Patientenzufriedenheit</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======== ABOUT ======== -->
+<section class="about section-pad" id="about">
+  <div class="container">
+    <div class="about__grid">
+
+      <div class="reveal-l">
+        <div class="about__index">— 01 / Philosophie</div>
+        <h2 class="about__heading">Therapie, die den<br><em>ganzen Menschen</em><br>versteht</h2>
+        <p class="about__body">Wir glauben, dass nachhaltige Heilung mehr erfordert als das Behandeln von Symptomen. Unser Ansatz verbindet evidenzbasierte Methoden mit einem tiefen Verständnis für den Menschen in seiner Gesamtheit — körperlich, geistig und in seinem Alltag.</p>
+        <p class="about__body">Jede Behandlung beginnt mit dem Zuhören. Denn nur wer versteht, woher jemand kommt, kann ihn dorthin begleiten, wo er hinwill.</p>
+        <div class="about__sig">
+          <div class="about__sig-rule"></div>
+          <span class="about__sig-name">Dr. Clara Hoffmann</span>
+          <div class="about__sig-rule"></div>
+        </div>
+      </div>
+
+      <div class="reveal-r">
+        <div class="about__panel">
+          <p class="about__quote">"Der Körper kennt den Weg zurück zur Gesundheit — wir begleiten ihn auf diesem Weg mit Präzision und Fürsorge."</p>
+          <div class="principles">
+            <div class="principle">
+              <svg class="principle__icon" viewBox="0 0 30 30" fill="none">
+                <circle cx="15" cy="15" r="13" stroke="#B8956A" stroke-width="1.1"/>
+                <path d="M9 15 L13 19 L21 11" stroke="#3D5247" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              <div class="principle__body">
+                <strong>Evidenzbasiert</strong>
+                Alle Methoden gründen auf aktueller wissenschaftlicher Forschung und klinischer Praxis.
+              </div>
+            </div>
+            <div class="principle">
+              <svg class="principle__icon" viewBox="0 0 30 30" fill="none">
+                <circle cx="15" cy="15" r="13" stroke="#B8956A" stroke-width="1.1"/>
+                <circle cx="15" cy="12" r="4" stroke="#3D5247" stroke-width="1.2"/>
+                <path d="M8 24 C8 20 11 18 15 18 C19 18 22 20 22 24" stroke="#3D5247" stroke-width="1.2" stroke-linecap="round"/>
+              </svg>
+              <div class="principle__body">
+                <strong>Individuell</strong>
+                Kein Körper gleicht dem anderen. Jede Behandlung ist spezifisch auf Sie zugeschnitten.
+              </div>
+            </div>
+            <div class="principle">
+              <svg class="principle__icon" viewBox="0 0 30 30" fill="none">
+                <circle cx="15" cy="15" r="13" stroke="#B8956A" stroke-width="1.1"/>
+                <path d="M9 20 Q15 8 21 20" stroke="#3D5247" stroke-width="1.3" stroke-linecap="round" fill="none"/>
+                <circle cx="15" cy="21" r="2" fill="#3D5247"/>
+              </svg>
+              <div class="principle__body">
+                <strong>Nachhaltig</strong>
+                Wir behandeln nicht nur — wir befähigen Sie, Ihre Gesundheit dauerhaft zu bewahren.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======== SERVICES ======== -->
+<section class="services section-pad" id="services">
+  <div class="container">
+    <div class="services__header reveal">
+      <div>
+        <div class="services__tag">— Leistungen</div>
+        <h2 class="services__heading">Was wir<br><em>für Sie tun</em></h2>
+      </div>
+      <p class="services__intro">Sechs Kernbereiche höchster physiotherapeutischer Qualität. Jede Behandlung wird präzise auf Ihre individuelle Situation abgestimmt.</p>
+    </div>
+
+    <div class="services__grid">
+
+      <!-- 01 Manuelle Therapie -->
+      <div class="svc reveal">
+        <svg class="svc__icon" viewBox="0 0 44 44" fill="none">
+          <path d="M11 30 C11 22 15 18 19 18 L19 12 C19 10.9 19.9 10 21 10 C22.1 10 23 10.9 23 12 L23 22" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M23 20 L23 14 C23 12.9 23.9 12 25 12 C26.1 12 27 12.9 27 14 L27 22" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M27 20 L27 16 C27 14.9 27.9 14 29 14 C30.1 14 31 14.9 31 16 L31 24" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+          <path d="M31 22 C31 22 34 22 34 26 C34 32 30 36 22 36 C16 36 11 32 11 26 C11 24 11 22 11 22" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <div class="svc__num">01</div>
+        <h3 class="svc__name">Manuelle Therapie</h3>
+        <p class="svc__desc">Gezielte Mobilisierung von Gelenken und Weichteilen zur Wiederherstellung physiologischer Bewegungsmuster.</p>
+        <svg class="svc__arrow" viewBox="0 0 18 18" fill="none"><path d="M2 16 L16 2 M7 2 L16 2 L16 11" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- 02 Sportrehabilitation -->
+      <div class="svc reveal d1">
+        <svg class="svc__icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="30" cy="10" r="3.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.3"/>
+          <path d="M30 13.5 L27 22 L18 26 M27 22 L31 29 L27 37" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M18 26 L14 24" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        <div class="svc__num">02</div>
+        <h3 class="svc__name">Sportrehabilitation</h3>
+        <p class="svc__desc">Von der Akutversorgung bis zur vollständigen Rückkehr in den Sport — strukturiert, sicher und leistungsorientiert.</p>
+        <svg class="svc__arrow" viewBox="0 0 18 18" fill="none"><path d="M2 16 L16 2 M7 2 L16 2 L16 11" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- 03 Haltungskorrektur -->
+      <div class="svc reveal d2">
+        <svg class="svc__icon" viewBox="0 0 44 44" fill="none">
+          <line x1="22" y1="6" x2="22" y2="38" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="22" cy="10"  r="2.5" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="22" cy="17"  r="2.5" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="22" cy="24"  r="2.5" fill="rgba(255,255,255,0.5)"/>
+          <circle cx="22" cy="31"  r="2.5" fill="rgba(255,255,255,0.5)"/>
+          <path d="M12 17 L22 17" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round"/>
+          <path d="M32 17 L22 17" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round"/>
+          <path d="M12 31 L22 31" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round"/>
+          <path d="M32 31 L22 31" stroke="rgba(255,255,255,0.35)" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <div class="svc__num">03</div>
+        <h3 class="svc__name">Haltungskorrektur</h3>
+        <p class="svc__desc">Analyse und Therapie von Haltungsdefiziten. Dauerhafte Verbesserung durch gezieltes Training und Körperbewusstsein.</p>
+        <svg class="svc__arrow" viewBox="0 0 18 18" fill="none"><path d="M2 16 L16 2 M7 2 L16 2 L16 11" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- 04 Schmerztherapie -->
+      <div class="svc reveal">
+        <svg class="svc__icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="22" r="5" stroke="rgba(255,255,255,0.6)" stroke-width="1.3"/>
+          <line x1="22" y1="8"  x2="22" y2="14" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="22" y1="30" x2="22" y2="36" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="8"  y1="22" x2="14" y2="22" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="30" y1="22" x2="36" y2="22" stroke="rgba(255,255,255,0.6)" stroke-width="1.3" stroke-linecap="round"/>
+          <line x1="12.1" y1="12.1" x2="16.3" y2="16.3" stroke="rgba(255,255,255,0.35)" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="27.7" y1="27.7" x2="31.9" y2="31.9" stroke="rgba(255,255,255,0.35)" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="31.9" y1="12.1" x2="27.7" y2="16.3" stroke="rgba(255,255,255,0.35)" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="16.3" y1="27.7" x2="12.1" y2="31.9" stroke="rgba(255,255,255,0.35)" stroke-width="1.1" stroke-linecap="round"/>
+        </svg>
+        <div class="svc__num">04</div>
+        <h3 class="svc__name">Schmerztherapie</h3>
+        <p class="svc__desc">Multimodaler Ansatz bei akuten und chronischen Schmerzzuständen. Ursachenorientiert, nicht symptommaskierend.</p>
+        <svg class="svc__arrow" viewBox="0 0 18 18" fill="none"><path d="M2 16 L16 2 M7 2 L16 2 L16 11" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- 05 Neurophysiologie -->
+      <div class="svc reveal d1">
+        <svg class="svc__icon" viewBox="0 0 44 44" fill="none">
+          <circle cx="22" cy="14" r="5.5" stroke="rgba(255,255,255,0.6)" stroke-width="1.3"/>
+          <circle cx="10" cy="32" r="4" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+          <circle cx="34" cy="32" r="4" stroke="rgba(255,255,255,0.5)" stroke-width="1.2"/>
+          <path d="M22 19.5 L16 28 M22 19.5 L28 28" stroke="rgba(255,255,255,0.5)" stroke-width="1.1" stroke-linecap="round"/>
+          <line x1="14" y1="32" x2="30" y2="32" stroke="rgba(255,255,255,0.3)" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <div class="svc__num">05</div>
+        <h3 class="svc__name">Neurophysiologie</h3>
+        <p class="svc__desc">Behandlung neurologischer Bewegungsstörungen. Rehabilitation nach Schlaganfall, Parkinson und weiteren Erkrankungen des Nervensystems.</p>
+        <svg class="svc__arrow" viewBox="0 0 18 18" fill="none"><path d="M2 16 L16 2 M7 2 L16 2 L16 11" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+      <!-- 06 Prävention -->
+      <div class="svc reveal d2">
+        <svg class="svc__icon" viewBox="0 0 44 44" fill="none">
+          <path d="M22 8 C29 8 36 13 37 20 C38 27 34 34 26 37 C24 38 20 38 18 37 C10 34 6 27 7 20 C8 13 15 8 22 8Z" stroke="rgba(255,255,255,0.6)" stroke-width="1.3"/>
+          <path d="M22 14 L22 22 L28 26" stroke="rgba(255,255,255,0.55)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="svc__num">06</div>
+        <h3 class="svc__name">Prävention &amp; Training</h3>
+        <p class="svc__desc">Vorsorge ist die beste Therapie. Personalisierte Programme für ein Leben in dauerhafter Bewegungsfreiheit und Vitalität.</p>
+        <svg class="svc__arrow" viewBox="0 0 18 18" fill="none"><path d="M2 16 L16 2 M7 2 L16 2 L16 11" stroke="#B8956A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======== PROCESS ======== -->
+<section class="process section-pad" id="process">
+  <div class="container">
+    <div class="process__head">
+      <div>
+        <div style="font-size:0.72rem;letter-spacing:0.16em;text-transform:uppercase;color:var(--stone);margin-bottom:16px">— Unser Prozess</div>
+        <h2 class="process__heading">Vier Schritte<br>zur <em>Heilung</em></h2>
+      </div>
+    </div>
+    <div class="process__grid">
+      <div class="step reveal">
+        <div class="step__dot"></div>
+        <div class="step__n">01</div>
+        <h3 class="step__title">Erstkonsultation</h3>
+        <p class="step__desc">Ein ausführliches Gespräch über Ihre Geschichte, Beschwerden und Ziele. Wir hören zu, bevor wir handeln.</p>
+      </div>
+      <div class="step reveal d1">
+        <div class="step__dot"></div>
+        <div class="step__n">02</div>
+        <h3 class="step__title">Diagnostik</h3>
+        <p class="step__desc">Systematische körperliche Untersuchung und Bewegungsanalyse. Präzise Befunderhebung als Grundlage der Therapie.</p>
+      </div>
+      <div class="step reveal d2">
+        <div class="step__dot"></div>
+        <div class="step__n">03</div>
+        <h3 class="step__title">Individuelle Behandlung</h3>
+        <p class="step__desc">Maßgeschneiderte Therapie mit bewährten Methoden, kontinuierlich angepasst an Ihren Fortschritt.</p>
+      </div>
+      <div class="step reveal d3">
+        <div class="step__dot"></div>
+        <div class="step__n">04</div>
+        <h3 class="step__title">Eigenverantwortung</h3>
+        <p class="step__desc">Wir befähigen Sie, Ihre Gesundheit selbst in die Hand zu nehmen — mit Wissen, Übungen und langfristiger Begleitung.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======== TEAM ======== -->
+<section class="team section-pad" id="team">
+  <div class="container">
+    <div class="team__head reveal">
+      <div class="team__tag">— Das Team</div>
+      <h2 class="team__heading">Menschen mit<br><em>Expertise</em></h2>
+    </div>
+    <div class="team__grid">
+
+      <!-- Dr. Clara Hoffmann -->
+      <div class="tcard reveal">
+        <div class="tcard__fig">
+          <svg viewBox="0 0 300 375" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="375" fill="#EDE8E0"/>
+            <ellipse cx="150" cy="240" rx="180" ry="200" fill="#E5DDD2" opacity="0.6"/>
+            <!-- White coat body -->
+            <path d="M0 375 L0 285 C20 258 58 246 88 240 L150 232 L212 240 C242 246 280 258 300 285 L300 375Z" fill="#F4F0EA"/>
+            <!-- Coat detail / lapels -->
+            <path d="M138 268 L150 290 L162 268" fill="#EAE4DB"/>
+            <path d="M88 240 L120 260 L138 268" stroke="#DDD6CC" stroke-width="1" fill="none"/>
+            <path d="M212 240 L180 260 L162 268" stroke="#DDD6CC" stroke-width="1" fill="none"/>
+            <!-- Neck -->
+            <path d="M136 230 C136 216 164 216 164 230 L164 252 C164 262 136 262 136 252Z" fill="#C49868"/>
+            <!-- Head -->
+            <ellipse cx="150" cy="172" rx="54" ry="60" fill="#C49868"/>
+            <!-- Ears -->
+            <ellipse cx="96"  cy="173" rx="7" ry="11" fill="#C49868"/>
+            <ellipse cx="204" cy="173" rx="7" ry="11" fill="#C49868"/>
+            <!-- Hair — bun style, dark -->
+            <path d="M96 156 C96 104 204 104 204 156 C204 128 190 102 150 100 C110 102 96 128 96 156Z" fill="#251C12"/>
+            <circle cx="150" cy="101" r="22" fill="#251C12"/>
+            <circle cx="150" cy="96"  r="15" fill="#2E2318"/>
+            <!-- Hair at sides -->
+            <path d="M96  150 C92 160 94 170 96 176"  stroke="#251C12" stroke-width="9"  stroke-linecap="round" fill="none"/>
+            <path d="M204 150 C208 160 206 170 204 176" stroke="#251C12" stroke-width="9" stroke-linecap="round" fill="none"/>
+            <!-- Eyes -->
+            <ellipse cx="132" cy="168" rx="7.5" ry="6.5" fill="#1A130A"/>
+            <ellipse cx="168" cy="168" rx="7.5" ry="6.5" fill="#1A130A"/>
+            <circle  cx="135" cy="166" r="2.2" fill="white" opacity="0.85"/>
+            <circle  cx="171" cy="166" r="2.2" fill="white" opacity="0.85"/>
+            <!-- Eyebrows -->
+            <path d="M122 158 C126 155 136 154 141 156" stroke="#1E1610" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+            <path d="M178 158 C174 155 164 154 159 156" stroke="#1E1610" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+            <!-- Nose -->
+            <path d="M146 180 C144 188 147 192 150 192 C153 192 156 188 154 180" stroke="#9A7040" stroke-width="1.1" fill="none"/>
+            <!-- Mouth -->
+            <path d="M139 203 C143 208 157 208 161 203" stroke="#7A4C28" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+            <!-- Gold accent strip -->
+            <rect x="0" y="0" width="300" height="3" fill="#B8956A"/>
+          </svg>
+        </div>
+        <div class="tcard__body">
+          <div class="tcard__role">Leitende Physiotherapeutin</div>
+          <h3 class="tcard__name">Dr. Clara Hoffmann</h3>
+          <p class="tcard__spec">Manuelle Therapie, Neurophysiologie, Chronische Schmerzen</p>
+        </div>
+      </div>
+
+      <!-- Martin Kerber -->
+      <div class="tcard reveal d1">
+        <div class="tcard__fig">
+          <svg viewBox="0 0 300 375" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="375" fill="#E8EDEA"/>
+            <ellipse cx="150" cy="240" rx="180" ry="200" fill="#DEE7E2" opacity="0.6"/>
+            <!-- Sage polo body -->
+            <path d="M0 375 L0 285 C20 258 58 246 88 240 L150 232 L212 240 C242 246 280 258 300 285 L300 375Z" fill="#3D5247"/>
+            <!-- Polo collar -->
+            <path d="M138 250 L150 272 L162 250 L150 242Z" fill="#344839"/>
+            <line x1="150" y1="242" x2="150" y2="280" stroke="#2E3F2F" stroke-width="1.2"/>
+            <!-- Neck -->
+            <path d="M136 230 C136 216 164 216 164 230 L164 252 C164 262 136 262 136 252Z" fill="#AA8050"/>
+            <!-- Head — slightly broader for male -->
+            <ellipse cx="150" cy="172" rx="57" ry="60" fill="#AA8050"/>
+            <ellipse cx="93"  cy="173" rx="8" ry="12" fill="#AA8050"/>
+            <ellipse cx="207" cy="173" rx="8" ry="12" fill="#AA8050"/>
+            <!-- Short hair -->
+            <path d="M93 160 C93 108 207 108 207 160 C207 130 192 102 150 100 C108 102 93 130 93 160Z" fill="#18110A"/>
+            <path d="M93  154 C89 163 92 173 93 178"  stroke="#18110A" stroke-width="12" stroke-linecap="round" fill="none"/>
+            <path d="M207 154 C211 163 208 173 207 178" stroke="#18110A" stroke-width="12" stroke-linecap="round" fill="none"/>
+            <!-- Eyes — set slightly wider -->
+            <ellipse cx="130" cy="168" rx="7.5" ry="6.5" fill="#14100A"/>
+            <ellipse cx="170" cy="168" rx="7.5" ry="6.5" fill="#14100A"/>
+            <circle  cx="133" cy="166" r="2.2" fill="white" opacity="0.85"/>
+            <circle  cx="173" cy="166" r="2.2" fill="white" opacity="0.85"/>
+            <!-- Eyebrows — thicker, male -->
+            <path d="M119 157 C124 154 135 154 140 156" stroke="#14100A" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <path d="M181 157 C176 154 165 154 160 156" stroke="#14100A" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+            <!-- Nose -->
+            <path d="M145 180 C143 189 146 194 150 194 C154 194 157 189 155 180" stroke="#7A5A28" stroke-width="1.2" fill="none"/>
+            <!-- Mouth -->
+            <path d="M139 206 C143 211 157 211 161 206" stroke="#5A3E18" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+            <!-- Light stubble -->
+            <path d="M120 202 Q128 210 137 211" stroke="#7A5A28" stroke-width="0.6" fill="none" opacity="0.35"/>
+            <path d="M180 202 Q172 210 163 211" stroke="#7A5A28" stroke-width="0.6" fill="none" opacity="0.35"/>
+            <rect x="0" y="0" width="300" height="3" fill="#B8956A"/>
+          </svg>
+        </div>
+        <div class="tcard__body">
+          <div class="tcard__role">Sporttherapeut</div>
+          <h3 class="tcard__name">Martin Kerber</h3>
+          <p class="tcard__spec">Sportrehabilitation, Biomechanik, Leistungsoptimierung</p>
+        </div>
+      </div>
+
+      <!-- Sophie Brandt -->
+      <div class="tcard reveal d2">
+        <div class="tcard__fig">
+          <svg viewBox="0 0 300 375" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect width="300" height="375" fill="#F0E8D8"/>
+            <ellipse cx="150" cy="240" rx="180" ry="200" fill="#E8D8C0" opacity="0.6"/>
+            <!-- Warm neutral top -->
+            <path d="M0 375 L0 285 C20 258 58 246 88 240 L150 232 L212 240 C242 246 280 258 300 285 L300 375Z" fill="#C8A870"/>
+            <!-- Neck -->
+            <path d="M136 230 C136 214 164 214 164 230 L164 252 C164 263 136 263 136 252Z" fill="#DDB880"/>
+            <!-- Head — slightly narrower -->
+            <ellipse cx="150" cy="175" rx="51" ry="58" fill="#DDB880"/>
+            <ellipse cx="99"  cy="176" rx="7" ry="11" fill="#DDB880"/>
+            <ellipse cx="201" cy="176" rx="7" ry="11" fill="#DDB880"/>
+            <!-- Long flowing hair — back layer -->
+            <path d="M99 148 C94 188 88 230 86 285 C86 318 98 350 112 368 L150 375 L188 368 C202 350 214 318 214 285 C212 230 206 188 201 148 C201 118 195 104 150 102 C105 104 99 118 99 148Z" fill="#7A5418"/>
+            <!-- Front hair parted in centre -->
+            <path d="M99 155 C99 108 201 108 201 155 C201 128 188 102 150 100 C112 102 99 128 99 155Z" fill="#966830"/>
+            <line x1="150" y1="100" x2="150" y2="128" stroke="#7A5418" stroke-width="0.8" opacity="0.5"/>
+            <!-- Hair over shoulders -->
+            <path d="M99 175 C88 190 84 218 86 250"  stroke="#7A5418" stroke-width="16" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <path d="M201 175 C212 190 216 218 214 250" stroke="#7A5418" stroke-width="16" stroke-linecap="round" fill="none" opacity="0.9"/>
+            <!-- Eyes -->
+            <ellipse cx="132" cy="172" rx="7" ry="6.5" fill="#1A100A"/>
+            <ellipse cx="168" cy="172" rx="7" ry="6.5" fill="#1A100A"/>
+            <circle  cx="135" cy="170" r="2"   fill="white" opacity="0.9"/>
+            <circle  cx="171" cy="170" r="2"   fill="white" opacity="0.9"/>
+            <!-- Eyebrows -->
+            <path d="M122 162 C126 159 137 159 141 161" stroke="#5A3808" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <path d="M178 162 C174 159 163 159 159 161" stroke="#5A3808" stroke-width="1.4" stroke-linecap="round" fill="none"/>
+            <!-- Nose -->
+            <path d="M146 184 C144 192 147 196 150 196 C153 196 156 192 154 184" stroke="#A87040" stroke-width="1.1" fill="none"/>
+            <!-- Warm smile -->
+            <path d="M138 208 C143 214 157 214 162 208" stroke="#7A4820" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+            <!-- Subtle cheek blush -->
+            <ellipse cx="118" cy="194" rx="13" ry="8" fill="#E89060" opacity="0.1"/>
+            <ellipse cx="182" cy="194" rx="13" ry="8" fill="#E89060" opacity="0.1"/>
+            <rect x="0" y="0" width="300" height="3" fill="#B8956A"/>
+          </svg>
+        </div>
+        <div class="tcard__body">
+          <div class="tcard__role">Physiotherapeutin</div>
+          <h3 class="tcard__name">Sophie Brandt</h3>
+          <p class="tcard__spec">Haltungskorrektur, Prävention, Myofasziale Therapie</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======== PULL QUOTE ======== -->
+<section class="pullquote">
+  <div class="pullquote__inner reveal">
+    <span class="pullquote__glyph">"</span>
+    <p class="pullquote__text">Gesundheit ist kein Zustand, den man erreicht — es ist eine Praxis, die man täglich neu wählt.</p>
+    <span class="pullquote__attr">Forma — Physiotherapie München</span>
+  </div>
+</section>
+
+
+<!-- ======== TESTIMONIALS ======== -->
+<section class="testimonials section-pad">
+  <div class="container">
+    <div class="testimonials__head reveal">
+      <div class="testimonials__tag">— Patientenstimmen</div>
+      <h2 class="testimonials__heading">Was unsere Patienten<br><em>berichten</em></h2>
+    </div>
+    <div class="testimonials__grid">
+      <div class="testi reveal">
+        <div class="testi__dots">
+          <span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span>
+        </div>
+        <p class="testi__text">"Nach Jahren mit Rückenschmerzen hat Dr. Hoffmann endlich die Ursache gefunden — nicht nur die Symptome behandelt. Präzise, klar, einfühlsam. Ich bin zutiefst dankbar."</p>
+        <span class="testi__by">M. K., 48 — Chronische Rückenschmerzen</span>
+      </div>
+      <div class="testi reveal d1">
+        <div class="testi__dots">
+          <span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span>
+        </div>
+        <p class="testi__text">"Die Sportrehabilitation nach meiner Kreuzband-OP war professionell wie kaum woanders. Martin hat mich zurück auf den Platz gebracht — schneller und stärker, als ich gedacht hatte."</p>
+        <span class="testi__by">L. F., 32 — Postoperative Rehabilitation</span>
+      </div>
+      <div class="testi reveal d2">
+        <div class="testi__dots">
+          <span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span><span class="testi__dot"></span>
+        </div>
+        <p class="testi__text">"Nicht nur eine Praxis — ein Ort, an dem man sich wirklich ernst genommen fühlt. Das Team von Forma hat meine Erwartungen bei weitem übertroffen. Klare Empfehlung."</p>
+        <span class="testi__by">H. B., 61 — Neurophysiologische Behandlung</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ======== CONTACT ======== -->
+<section class="contact section-pad" id="contact">
+  <div class="container">
+    <div class="contact__grid">
+
+      <div class="reveal-l">
+        <div class="contact__tag">— Kontakt &amp; Termin</div>
+        <h2 class="contact__heading">Schreiben<br>Sie <em>uns</em></h2>
+        <p class="contact__sub">Wir antworten innerhalb von 24 Stunden. Oder rufen Sie uns direkt an: <strong style="color:var(--ink);font-weight:400">+49 89 123 456 00</strong></p>
+        <form class="form" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Vorname</label>
+              <input class="form-input" type="text" placeholder="Maria">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Nachname</label>
+              <input class="form-input" type="text" placeholder="Muster">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">E-Mail-Adresse</label>
+            <input class="form-input" type="email" placeholder="maria@beispiel.de">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Betreff</label>
+            <input class="form-input" type="text" placeholder="Terminanfrage · Frage · Sonstiges">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Nachricht</label>
+            <textarea class="form-textarea" placeholder="Beschreiben Sie kurz Ihr Anliegen..."></textarea>
+          </div>
+          <button type="submit" class="btn btn--sage" id="submitBtn" style="align-self:flex-start;margin-top:8px">Nachricht senden</button>
+        </form>
+      </div>
+
+      <div class="reveal-r">
+        <div class="info-list">
+          <div class="info-item">
+            <div class="info-label">Adresse</div>
+            <div class="info-value">Maximilianstrasse 42<br>80539 München</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Öffnungszeiten</div>
+            <div class="info-value">Mo – Fr &nbsp;08:00 – 19:00<br>Sa &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;09:00 – 14:00</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">Telefon</div>
+            <div class="info-value">+49 89 123 456 00</div>
+          </div>
+          <div class="info-item">
+            <div class="info-label">E-Mail</div>
+            <div class="info-value">info@forma-physio.de</div>
+          </div>
+        </div>
+        <div class="map-wrap">
+          <svg width="100%" height="100%" viewBox="0 0 560 188" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <rect width="560" height="188" fill="#D8D2CA"/>
+            <!-- Grid -->
+            <line x1="0" y1="56"  x2="560" y2="56"  stroke="#C8C2BA" stroke-width="0.5"/>
+            <line x1="0" y1="112" x2="560" y2="112" stroke="#C8C2BA" stroke-width="0.5"/>
+            <line x1="140" y1="0" x2="140" y2="188" stroke="#C8C2BA" stroke-width="0.5"/>
+            <line x1="280" y1="0" x2="280" y2="188" stroke="#C8C2BA" stroke-width="0.5"/>
+            <line x1="420" y1="0" x2="420" y2="188" stroke="#C8C2BA" stroke-width="0.5"/>
+            <!-- Streets -->
+            <line x1="0"   y1="84"  x2="560" y2="84"  stroke="#AEA89E" stroke-width="5"/>
+            <line x1="224" y1="0"   x2="224" y2="188" stroke="#AEA89E" stroke-width="5"/>
+            <line x1="0"   y1="136" x2="560" y2="136" stroke="#B8B2A8" stroke-width="2.5"/>
+            <line x1="170" y1="0"   x2="170" y2="188" stroke="#B8B2A8" stroke-width="2.5"/>
+            <!-- Blocks -->
+            <rect x="16"  y="16"  width="56" height="38" rx="1" fill="#C5BFB6"/>
+            <rect x="80"  y="10"  width="72" height="52" rx="1" fill="#BDB7AE"/>
+            <rect x="252" y="28"  width="44" height="50" rx="1" fill="#C5BFB6"/>
+            <rect x="308" y="18"  width="88" height="62" rx="1" fill="#BDB7AE"/>
+            <rect x="16"  y="100" width="48" height="32" rx="1" fill="#C0BAB0"/>
+            <rect x="78"  y="96"  width="80" height="36" rx="1" fill="#C5BFB6"/>
+            <!-- Location pin -->
+            <path d="M224 84 C224 70 212 60 212 60 C212 60 200 70 200 84 C200 91 206 96 212 96 C218 96 224 91 224 84Z" fill="#3D5247"/>
+            <circle cx="212" cy="82" r="5" fill="white"/>
+            <text x="230" y="80" font-family="sans-serif" font-size="9" fill="#3D5247" font-weight="500" letter-spacing="0.5">Maximilianstr. 42</text>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer__inner">
+    <span class="footer__logo">Forma</span>
+    <span class="footer__copy">© 2025 Forma Physiotherapie München GmbH</span>
+    <nav class="footer__nav">
+      <a href="#">Impressum</a>
+      <a href="#">Datenschutz</a>
+      <a href="#">Barrierefreiheit</a>
+    </nav>
+  </div>
+</footer>
+
+
+<script>
+  /* === NAV SCROLL BEHAVIOR === */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 56);
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  /* === SCROLL REVEAL === */
+  const revealEls = document.querySelectorAll('.reveal, .reveal-l, .reveal-r');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+
+  /* === FORM SUBMIT === */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Gesendet — Danke';
+    btn.style.background = '#3D5247';
+    btn.disabled = true;
+    btn.style.opacity = '0.8';
+  }
+</script>
+
+</body>
+</html>
