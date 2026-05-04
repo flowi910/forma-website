@@ -110,6 +110,12 @@
       transition: opacity 0.3s;
     }
     .nav__logo:hover img { opacity: 0.75; }
+    .nav__logo svg {
+      height: 36px;
+      width: auto;
+      transition: opacity 0.3s;
+    }
+    .nav__logo:hover svg { opacity: 0.75; }
     .nav__links { display: flex; align-items: center; gap: 36px; }
     .nav__links a {
       font-size: 0.78rem;
@@ -841,7 +847,20 @@
 <!-- ======== NAVIGATION ======== -->
 <nav class="nav" id="nav">
   <div class="nav__inner">
-    <a href="#" class="nav__logo"><img src="logo.png" alt="Physiotherapie am Eulenbrunnen"></a>
+    <a href="#" class="nav__logo">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 232 40" fill="none" role="img" aria-label="Physiotherapie am Eulenbrunnen">
+        <!-- Brunnen-Symbol: Bogen + Tropfen -->
+        <path d="M10 28 Q10 10 22 10 Q34 10 34 28" stroke="#B8956A" stroke-width="1.3" stroke-linecap="round"/>
+        <circle cx="15.5" cy="30.5" r="1.4" fill="#B8956A"/>
+        <circle cx="22"   cy="32.5" r="1.4" fill="#B8956A"/>
+        <circle cx="28.5" cy="30.5" r="1.4" fill="#B8956A"/>
+        <!-- Trennlinie -->
+        <line x1="46" y1="8" x2="46" y2="32" stroke="#E0D9CF" stroke-width="0.8"/>
+        <!-- Text -->
+        <text x="57" y="19" font-family="'DM Sans', system-ui, sans-serif" font-size="9.5" font-weight="400" letter-spacing="2.5" fill="#18150F">PHYSIOTHERAPIE</text>
+        <text x="57" y="31" font-family="'DM Sans', system-ui, sans-serif" font-size="6.5" font-weight="300" letter-spacing="1.5" fill="#8A8278">AM EULENBRUNNEN</text>
+      </svg>
+    </a>
     <ul class="nav__links">
       <li><a href="#about">Philosophie</a></li>
       <li><a href="#services">Leistungen</a></li>
